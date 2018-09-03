@@ -25,7 +25,7 @@ for(let i=0;i<threads.length;i++){
 	thread.author+"\r\n"+
 	thread.postdate+"\r\n"+
 	thread.pw_tmsg.content+"\r\n";
-	console.log(text);
+	// console.log(text);
 	 fs.writeFileSync(tpath, text);
 }
 // fs.writeFileSync(file, data[, options])
