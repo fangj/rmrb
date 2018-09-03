@@ -124,7 +124,7 @@ async function working(){
   const forums=await getAllForums();
   makeDirs(forums) //每个月一个目录
   for(let i=0;i<forums.length;i++){//一个月
-    const forum=forums[0];
+    const forum=forums[i];
     const threads=await getThreads(forum.fid);
     const groupedThreads=Object.values(_.groupBy(threads,'postdate'));//按天分组
     groupedThreads.forEach(threads=>writeFiles(forum.name,threads));
