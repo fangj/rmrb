@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const Moment = require('moment');
 //test:pwd@192.168.25.128/rmrb
 const sequelize = new Sequelize('rmrb', 'test', 'pwd', {
   host: '192.168.25.128',
@@ -36,9 +37,17 @@ const Threads = sequelize.define('pw_threads', {
       allowNull: false,
       primaryKey: true
     },
-  name: Sequelize.STRING,
   author:Sequelize.STRING,
   subject:Sequelize.STRING,
+  // postdate:Sequelize.INTEGER,
+  //https://blog.unlink.link/sql/mysql_before_1970_minus_unixtime.html
+  postdate: {
+    type: Sequelize.INTEGER,
+    get() {
+      const pdate = this.getDataValue('postdate');
+      return Moment(pdate*1000).format("YYYY-MM-DD");
+    },
+  },
 });
 
 const TMsgs = sequelize.define('pw_tmsgs', {
@@ -64,6 +73,12 @@ async function working(){
         type:"forum"
       }});
   console.log(f.toJSON());
+
+   const t=await Threads.findOne();
+  console.log(t.toJSON());
+
+   const m=await TMsgs.findOne();
+  console.log(m.toJSON());
 }
 
 working();

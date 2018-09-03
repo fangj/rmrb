@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "iconv": "^2.3.0",
+    "moment": "^2.22.2",
     "mysql2": "^1.6.1",
     "sequelize": "^4.38.0"
   }
