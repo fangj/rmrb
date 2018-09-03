@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const Moment = require('moment');
+const _ =require('lodash');
 //test:pwd@192.168.25.128/rmrb
 const sequelize = new Sequelize('rmrb', 'test', 'pwd', {
   host: '192.168.25.128',
@@ -59,6 +60,8 @@ const TMsgs = sequelize.define('pw_tmsgs', {
   content:Sequelize.TEXT,
 });
 
+Threads.hasOne(TMsgs, { foreignKey: 'tid' })
+
 // sequelize
 //   .authenticate()
 //   .then(() => {
@@ -82,6 +85,7 @@ async function getThreads(fid){
     where:{
       fid:fid
     },
+    include: [ TMsgs ],
     order: [['postdate'],['tid']]
   });
    const threads=_threads.map(t=>t.toJSON());
@@ -95,6 +99,9 @@ async function working(){
   const f0=forums[0];
   const threads=await getThreads(f0.fid);
   console.log(threads);
+  const groupedThreads=Object.values(_.groupBy(threads,'postdate'));
+  const g0=groupedThreads[0];
+  console.log(g0);
 
   //  const t=await Threads.findOne();
   // console.log(t.toJSON());

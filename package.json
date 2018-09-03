@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fs-extra": "^7.0.0",
     "iconv": "^2.3.0",
+    "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "mysql2": "^1.6.1",
     "sequelize": "^4.38.0"
