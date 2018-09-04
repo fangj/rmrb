@@ -109,7 +109,7 @@ let dirName=fpath(forumName);
 for(let i=0;i<threads.length;i++){
   const thread=threads[i];
   const subject=thread.subject;
-  const filename=_.snakeCase(subject)+".md";
+  const filename=thread.postdate+"_"+_.snakeCase(subject)+".md";
   const tpath=path.join(dirName,filename);
   console.log(tpath);
   const text="### "+thread.subject+"\r\n"+
