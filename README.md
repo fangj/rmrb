@@ -5,6 +5,7 @@
 * 7z 使用[7zip](https://www.7-zip.org/)压缩的文章内容，每月一个压缩包。  
 * example [文章样例](example/1946年05月)
 
-可以使用[Typora](https://typora.io/)查看  
+使用[Typora](https://typora.io/)查看的效果
+
 ![例图](screenshot/screenshot1.png)
 
